@@ -75,6 +75,12 @@ const LoanTermsComponent = ({submitLoanTerms}) => {
 								name="newRate"
 								value={refinance.newRate}
 								onChange={(e) => handleChange(e, index)}
+								InputProps={{
+									inputProps: {
+										step: 0.01, // Allows values with two decimal places
+										type: 'number', // Specifies the input type as number
+									},
+								}}
 							/>
 						</Grid>
 						<Grid item xs={2.4}>

@@ -20,6 +20,13 @@ export class MortgageCalculator {
 
 			let refinance = refinances[i];
 
+			if (refinance.downPayment && refinance.downPayment > 0) {
+				tableData.push({
+					message: 'Downpayment for ' + refinance.downPayment + ' (' + balance.toFixed(0) + ' -> ' + (balance - refinance.downPayment).toFixed(0) + ')'
+				});
+
+				balance -= refinance.downPayment;
+			}
 
 			const monthlyRate = refinance.newRate / 12 / 100;
 			const totalPayments = refinance.newTerm * 12;
@@ -27,15 +34,6 @@ export class MortgageCalculator {
 
 
 			for (let month = 1; month <= totalPayments; month++) {
-
-				if (month === 1 && refinance.downPayment && refinance.downPayment > 0) {
-
-					tableData.push({
-						message: 'Downpayment for ' + refinance.downPayment + ' (' + balance.toFixed(0) + ' -> ' + (balance - refinance.downPayment).toFixed(0) + ')'
-					});
-
-					balance -= refinance.downPayment;
-				}
 
 				if (i + 1 < refinances.length && month >= refinances[i + 1].startMonth) {
 					let newRefinance = refinances[i + 1];
