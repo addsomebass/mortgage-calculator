@@ -3,12 +3,12 @@ import { TextField, Button, Grid, Paper } from '@mui/material';
 
 const LoanTermsComponent = ({submitLoanTerms}) => {
 	const [loanTerms, setLoanTerms] = useState({
-		principalAmount: 100000,
+		principalAmount: 322000,
 		refinances: [{
-			newRate: 7,
-			newTerm: 12,
+			newRate: 6.24,
+			newTerm: 30,
 			startMonth: 1,
-			downPayment: 200,
+			downPayment: 64400,
 			extraPayment: 100
 		}]
 	});
